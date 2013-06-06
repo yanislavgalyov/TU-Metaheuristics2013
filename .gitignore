@@ -1,0 +1,11 @@
+packages/*
+packages/**/*
+
+Metaheuristics/bin/*
+Metaheuristics/bin/**/*
+Metaheuristics/obj/*
+Metaheuristics/obj/**/*
+
+*.tmp
+*.suo
+*.csproj.user

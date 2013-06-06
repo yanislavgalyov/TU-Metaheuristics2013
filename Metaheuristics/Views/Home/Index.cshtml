@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "TSP - GA";
+}
+
+<script src="~/Scripts/raphael.js" type="text/javascript"></script>
+<script src="~/Scripts/world.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="~/Content/demo.css" media="screen">
+<link rel="stylesheet" href="~/Content/demo-print.css" media="print">
+<style media="screen">
+    #latlon-form {
+        position: absolute;
+        top: 430px;
+    }
+
+        #latlon-form input {
+            font-size: 14px;
+            width: 200px;
+        }
+
+        #latlon-form button {
+            font-size: 14px;
+        }
+
+    #cities {
+        position: absolute;
+        top: 550px;
+        margin: 0 10px;
+        padding: 0;
+        list-style: none;
+    }
+
+        #cities a {
+            color: #ccf;
+        }
+</style>
+
+<script src="~/Scripts/demo.js" type="text/javascript"></script>
+
+<div id="latlon-form">
+    <table>
+        <tr>
+            <td>Поколения на стъпка</td>
+            <td>
+                <input id="iterationsPerStep" type="text" value="10" /></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Общо поколения</td>
+            <td>
+                <input id="iterations" type="text" value="1000" /></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Градове</td>
+            <td>
+                <input id="citiesNum" type="text" value="0" disabled="disabled" /></td>
+            <td></td>
+        </tr>
+        <tr style="text-align: right;">
+            <td colspan="3">
+                <button id="reset" style="margin-right: 4px;">Изчисти</button>
+                <button id="random" style="margin-right: 4px;">Добави произволна точка</button>
+                <button id="start" style="margin-right: 4px;">Старт</button></td>
+        </tr>
+    </table>
+</div>
+
+<ol id="cities">
+    <li><a href="#24°28′N 54°22′E">Abu Dhabi</a></li>
+    <li><a href="#51°10′0″N 71°26′0″E">Astana</a></li>
+    <li><a href="#33°20′00″N 44°26′00″E">Baghdad</a></li>
+    <li><a href="#34°36′12″S 58°22′54″W">Buenos Aires</a></li>
+    <li><a href="#30°3′N 31°14′E">Cairo</a></li>
+    <li><a href="#22 20 N 114 11 E">Hong Kong</a></li>
+    <li><a href="#26° 12' 0&quot; S  28° 5' 0&quot; E">Johannesburg</a></li>
+    <li><a href="#6°27′11″N 3°23′45″E">Lagos</a></li>
+    <li><a href="#55 45 N 37 36 E">Moscow</a></li>
+    <li><a href="#28°36′50″N 77°12′32″E">New Delhi</a></li>
+    <li><a href="#40° 45' 21″N 73° 59' 11″W">New York</a></li>
+    <li><a href="#48 48 N 2 20 E">Paris</a></li>
+    <li><a href="#22 57 S 43 12 W">Rio de Janeiro</a></li>
+    <li><a href="#37° N 122° W">San Francisco</a></li>
+    <li><a href="#42° 42′N, 23°20′E">Sofia</a></li>
+    <li><a href="#33°51′35.9″S, 151°12′40″E">Sydney</a></li>
+    <li><a href="#35 40 N 139 45 E">Tokyo</a></li>
+    <li><a href="#48 14 N, 16 20 E">Vienna</a></li>
+</ol>
+<p id="copy">Документация по проекта може да намерите <a href="/documentation.pdf">тук</a></p>
