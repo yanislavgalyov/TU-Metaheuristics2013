@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -26,7 +27,7 @@ namespace Metaheuristics.Controllers
         }
 
         [HttpPost]
-        public ActionResult Init(int it, int perStep, List<double> xs, List<double> ys)
+        public ActionResult Init(int it, int perStep, string[] xs, string[] ys)
         {
             _xs = new List<double>();
             _ys = new List<double>();
@@ -36,16 +37,26 @@ namespace Metaheuristics.Controllers
             _cityList = new Cities();
             _tsp = new Tsp();
 
-            _xs = xs;
-            _ys = ys;
+            NumberFormatInfo format = new NumberFormatInfo();
+            format.NumberGroupSeparator = ".";
+
+            foreach (var coord in xs)
+            {
+                _xs.Add(Double.Parse(coord, format));
+            }
+
+            foreach (var coord in ys)
+            {
+                _ys.Add(Double.Parse(coord, format));
+            }
             _iterations = it;
             _iterationsPerStep = perStep;
 
             //Cities cityList = new Cities();
 
-            for (int i = 0; i < xs.Count; i++)
+            for (int i = 0; i < _xs.Count; i++)
             {
-                City city = new City(Convert.ToInt32(xs[i]), Convert.ToInt32(ys[i]));
+                City city = new City(Convert.ToInt32(_xs[i]), Convert.ToInt32(_ys[i]));
                 _cityList.Add(city);
             }
 
